@@ -47,7 +47,6 @@ RUN set -x \
 		gcc \
 		libc-dev \
 		make \
-		"openjdk${JAVA_VERSION%%[-~bu]*}"="$JAVA_ALPINE_VERSION" \
 		openssl-dev \
 	&& ( \
 		export CATALINA_HOME="$PWD" \
