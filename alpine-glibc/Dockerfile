@@ -1,3 +1,4 @@
+FROM bash:4.4
 
 # Here we install GNU libc (aka glibc) and set C.UTF-8 locale as default.
 
