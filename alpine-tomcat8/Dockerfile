@@ -1,4 +1,4 @@
-FROM oraclejre:1.8
+FROM swineherd/oraclejre:1.8
 
 ENV CATALINA_HOME /usr/local/tomcat
 ENV PATH $CATALINA_HOME/bin:$PATH
