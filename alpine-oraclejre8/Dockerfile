@@ -1,4 +1,4 @@
-FROM swineherd/alpine-glibc:alpine-3.5
+FROM swineherd/alpine-glibc:bash-4.4
 
 ENV JAVA_VERSION=8 \
     JAVA_UPDATE=121 \
