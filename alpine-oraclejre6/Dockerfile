@@ -12,6 +12,9 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip &
     chmod a+x /tmp/jdk-$JAVA_VERSION-linux-x64.bin  && \
     /tmp/jdk-$JAVA_VERSION-linux-x64.bin && \
     rm /tmp/jdk-$JAVA_VERSION-linux-x64.bin && \
+    mkdir -p /usr/java && \
+    mv /tmp/jdk1.6.0_45/ /usr/java/ && \
+    ln -s /usr/java/jdk1.6.0_45 /usr/java/latest && \
     ln -s "$JAVA_HOME/bin/"* "/usr/bin/" && \
     rm -rf "$JAVA_HOME/"*src.zip && \
     rm -rf "$JAVA_HOME/lib/missioncontrol" \
@@ -34,4 +37,4 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip &
            "$JAVA_HOME/jre/lib/amd64/"libjavafx*.so \
            "$JAVA_HOME/jre/lib/amd64/"libjfx*.so && \
     apk del build-dependencies && \
-    rm -f "/tmp/"*
+    rm -rf "/tmp/"*
