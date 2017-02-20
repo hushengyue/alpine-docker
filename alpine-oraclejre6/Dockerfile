@@ -5,14 +5,6 @@ ENV JAVA_VERSION=6 \
     JAVA_BUILD=06 \
     JAVA_HOME="/usr/java/latest"
 
-
-
-RUN yum -y localinstall /jdk-$JAVA_VERSION-linux-amd64.rpm
-RUN rm /jdk-$JAVA_VERSION-linux-amd64.rpm
-RUN yum clean all
-
-ENV JAVA_HOME /usr/java/latest
-
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
     cd "/tmp" && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
