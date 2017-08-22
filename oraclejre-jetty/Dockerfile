@@ -60,6 +60,8 @@ RUN set -xe \
 	&& java -jar "$JETTY_HOME/start.jar" --create-startd --add-to-start="server,http,deploy,jsp,jstl,ext,resources,websocket,setuid" \
 	&& chown -R jetty:jetty "$JETTY_BASE" \
 	&& rm -rf /tmp/hsperfdata_root
+	
+
 
 ENV TMPDIR /tmp/jetty
 RUN set -xe \
@@ -67,7 +69,8 @@ RUN set -xe \
 	&& chown -R jetty:jetty "$TMPDIR"
 
 COPY docker-entrypoint.sh /
-
+RUN set -xe \
+	&& chmod +x /docker-entrypoint.sh
 EXPOSE 8080
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["java","-jar","/usr/local/jetty/start.jar"]
