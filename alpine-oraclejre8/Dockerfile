@@ -1,9 +1,9 @@
-FROM swineherd/alpine-glibc:bash-4.4
+FROM swineherd/alpine-glibc:bash-5.0
 
 ENV JAVA_VERSION=8 \
-    JAVA_UPDATE=144 \
-    JAVA_BUILD=01 \
-    JAVA_PATH=090f390dda5b47b9b721c7dfaa008135 \
+    JAVA_UPDATE=202 \
+    JAVA_BUILD=08 \
+    JAVA_PATH=1961070e4c9b4e26a04e7f5a083f551e \
     JAVA_HOME="/usr/lib/jvm/default-jvm"
 
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
