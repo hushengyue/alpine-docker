@@ -1,15 +1,15 @@
 FROM swineherd/alpine-glibc:bash-5.0
 
 ENV JAVA_VERSION=8 \
-    JAVA_UPDATE=202 \
-    JAVA_BUILD=08 \
-    JAVA_PATH=1961070e4c9b4e26a04e7f5a083f551e \
+    JAVA_UPDATE=211 \
+    JAVA_BUILD=12 \
+    JAVA_PATH=478a62b7d4e34b78b671c754eaaf38ab \
     JAVA_HOME="/usr/lib/jvm/default-jvm"
-
+    
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
     cd "/tmp" && \
     wget --header "Cookie: oraclelicense=accept-securebackup-cookie;" \
-        "http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
+        "https://download.oracle.com/otn/java/jdk/${JAVA_VERSION}u${JAVA_UPDATE}-b${JAVA_BUILD}/${JAVA_PATH}/server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     tar -xzf "server-jre-${JAVA_VERSION}u${JAVA_UPDATE}-linux-x64.tar.gz" && \
     mkdir -p "/usr/lib/jvm" && \
     mv "/tmp/jdk1.${JAVA_VERSION}.0_${JAVA_UPDATE}" "/usr/lib/jvm/java-${JAVA_VERSION}-oracle" && \
