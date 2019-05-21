@@ -7,15 +7,11 @@ ENV PATH /usr/local/bin:$PATH
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
 ENV LANG C.UTF-8
 
-# install ca-certificates so that HTTPS works consistently
-# other runtime dependencies for Python are installed later
-RUN apk add --no-cache ca-certificates
-
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 ENV PYTHON_VERSION 3.6.8
 
 RUN set -ex \
-  && apk add --no-cache --virtual .fetch-deps \
+  && yum install -y \
     gnupg \
     tar \
     xz \
@@ -31,7 +27,7 @@ RUN set -ex \
   && tar -xJC /usr/src/python --strip-components=1 -f python.tar.xz \
   && rm python.tar.xz \
   \
-  && apk add --no-cache --virtual .build-deps  \
+  && yum install -y  \
     bzip2-dev \
     coreutils \
     dpkg-dev dpkg \
@@ -56,8 +52,6 @@ RUN set -ex \
     xz-dev \
     zlib-dev \
 # add build deps before removing fetch deps in case there's overlap
-  && apk del .fetch-deps \
-  \
   && cd /usr/src/python \
   && gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
   && ./configure \
@@ -78,8 +72,32 @@ RUN set -ex \
     | sort -u \
     | awk 'system("[ -e /usr/local/lib/" $1 " ]") == 0 { next } { print "so:" $1 }' \
     | xargs -rt apk add --no-cache --virtual .python-rundeps \
-  && apk del .build-deps \
+  && yum erase -y  \
+    bzip2-dev \
+    coreutils \
+    dpkg-dev dpkg \
+    expat-dev \
+    findutils \
+    gcc \
+    gdbm-dev \
+    libc-dev \
+    libffi-dev \
+    libnsl-dev \
+    libtirpc-dev \
+    linux-headers \
+    make \
+    ncurses-dev \
+    openssl-dev \
+    pax-utils \
+    readline-dev \
+    sqlite-dev \
+    tcl-dev \
+    tk \
+    tk-dev \
+    xz-dev \
+    zlib-dev \
   \
+  && yum clean all \
   && find /usr/local -depth \
     \( \
       \( -type d -a \( -name test -o -name tests \) \) \
