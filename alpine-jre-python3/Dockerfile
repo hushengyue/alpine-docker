@@ -7,23 +7,15 @@ ENV PATH /usr/local/bin:$PATH
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
 ENV LANG C.UTF-8
 
-ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 ENV PYTHON_VERSION 3.6.8
 
 RUN set -ex \
   && yum install -y \
-    gnupg \
     tar \
     wget \
     xz \
   \
   && wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
-  && wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc" \
-  && export GNUPGHOME="$(mktemp -d)" \
-  && gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY" \
-  && gpg --batch --verify python.tar.xz.asc python.tar.xz \
-  && { command -v gpgconf > /dev/null && gpgconf --kill all || :; } \
-  && rm -rf "$GNUPGHOME" python.tar.xz.asc \
   && mkdir -p /usr/src/python \
   && tar -xJC /usr/src/python --strip-components=1 -f python.tar.xz \
   && rm python.tar.xz \
