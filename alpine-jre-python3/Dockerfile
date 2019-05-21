@@ -1,4 +1,4 @@
-FROM swineherd/oraclejre:1.8-bash
+FROM store/oracle/serverjre:8
 
 # ensure local python is preferred over distribution python
 ENV PATH /usr/local/bin:$PATH
