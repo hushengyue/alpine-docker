@@ -11,7 +11,7 @@ Cython==0.29.16
 decorator==4.1.2
 ephem==3.7.7.1
 fastdtw==0.3.4
-fbprophet==0.6
+#fbprophet==0.6
 google==2.0.3
 grpcio==1.28.1
 grpcio-tools==1.28.1
