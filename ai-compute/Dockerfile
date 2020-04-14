@@ -1,14 +1,7 @@
-FROM python:3.6-alpine
+FROM swineherd/pyinstaller:3.6.5-3.6
 
 LABEL maintainer="Daniel <daniel.hu@cloudwise.com>"
 
-RUN apk update && \
-    apk upgrade && \
-    apk add --no-cache libstdc++ && \
-    apk add --no-cache --virtual=build_deps g++ gfortran && \
-    ln -s /usr/include/locale.h /usr/include/xlocale.h && \
-    pip install --no-cache-dir pandas numpy fbprophet Cython pystan && \
-    rm /usr/include/xlocale.h && \
-    apk del build_deps
+COPY requirements.txt /requirements.txt
+RUN pip install --no-cache-dir -r /requirements.txt
 
-CMD ["python"]
