@@ -5,7 +5,7 @@ future==0.17.1
 grpcio==1.19.0
 grpcio-tools==1.19.0
 idna==2.8
-Jinja2==2.10.1
+Jinja2==2.11.3
 joblib==0.13.2
 macholib==1.11
 MarkupSafe==1.1.1
