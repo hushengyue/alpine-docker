@@ -37,7 +37,7 @@ pip==20.0.2
 prompt-toolkit==1.0.15
 protobuf==3.11.3
 ptyprocess==0.5.2
-Pygments==2.2.0
+Pygments==2.7.4
 PyInstaller==3.6
 PyMeeus==0.3.7
 pyparsing==2.4.7
