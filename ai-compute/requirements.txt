@@ -10,7 +10,7 @@ joblib==0.13.2
 macholib==1.11
 MarkupSafe==1.1.1
 memory-profiler==0.55.0
-numpy==1.16.2
+numpy==1.22.0
 pandahouse==0.2.7
 pandas==0.24.2
 pefile==2018.8.8
