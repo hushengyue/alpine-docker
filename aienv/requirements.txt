@@ -20,7 +20,7 @@ ipykernel==4.6.1
 ipython==6.1.0
 ipython-genutils==0.2.0
 jedi==0.10.2
-joblib==0.14.1
+joblib==1.2.0
 jupyter-client==5.1.0
 jupyter-core==4.3.0
 kiwisolver==1.2.0
