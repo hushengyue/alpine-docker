@@ -50,7 +50,7 @@ pyzmq==16.0.2
 requests==2.23.0
 scikit-learn==0.22.2.post1
 scipy==1.4.1
-setuptools==36.4.0
+setuptools==65.5.1
 setuptools-git==1.2
 shellescape==3.8.1
 simplegeneric==0.8.1
